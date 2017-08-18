@@ -1,0 +1,22 @@
+
+<div  class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title ng-binding" ng-bind="title"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group form-group-md">
+        <div class="form-group form-group-md"  ng-repeat='r in movie.ratings'>
+          <star-rating-comp read-only="true" rating="r.rating" star-type="'icon'" ></star-rating-comp>
+          <br>
+          <label for="comment">{{r.user.email}} said..</label>
+          <textarea class="form-control" rows="3" ng-disabled='true'ng-model="r.comment"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="$hide()">Close</button>
+      </div>
+    </div> 
+  </div>
+</div>
