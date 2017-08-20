@@ -1,20 +1,20 @@
-<div ng-controller="DashboardController" class="container">
-    <table class="table">
+<div ng-controller="DashboardController" class="container-fluid">
+    <table class="table table-hover table-responsive table-striped">
       <tr>
         <th ng-click="sort('title')">Title 
           <span ng-show = "orderByProp=='title'" class="glyphicon glyphicon-chevron-up"></span>
           <span ng-show = "orderByProp=='-title'" class="glyphicon glyphicon-chevron-down"></span>
         </th>
-        <th ng-click="sort('releaseDate')">Release Date 
+        <th class="hidden-xs" ng-click="sort('releaseDate')">Release Date 
           <span ng-show = "orderByProp=='releaseDate'" class="glyphicon glyphicon-chevron-up"></span>
           <span ng-show = "orderByProp=='-releaseDate'" class="glyphicon glyphicon-chevron-down"></span>
         </th>
-        <th ng-click="sort('duration')">Duration (in min)
+        <th class="hidden-xs" ng-click="sort('duration')">Duration (in min)
         <span ng-show = "orderByProp=='duration'" class="glyphicon glyphicon-chevron-up"></span>
           <span ng-show = "orderByProp=='-duration'" class="glyphicon glyphicon-chevron-down"></span>
         </th>
-        <th>Actors</th>
-        <th ng-click="sort('director')">Director
+        <th class="">Actors</th>
+        <th class="hidden-xs" ng-click="sort('director')">Director
           <span ng-show = "orderByProp=='director'" class="glyphicon glyphicon-chevron-up"></span>
           <span ng-show = "orderByProp=='-director'" class="glyphicon glyphicon-chevron-down"></span>
         </th>
@@ -26,17 +26,17 @@
       </tr>
       <tr ng-repeat="m in movies | orderBy:orderByProp">
         <td>{{m.title}}</td>
-        <td>{{m.releaseDate | date:'yyyy-MM-dd'}}</td>
-        <td>{{m.duration}}</td>
-        <td>
+        <td class="hidden-xs">{{m.releaseDate | date:'yyyy-MM-dd'}}</td>
+        <td class="hidden-xs">{{m.duration}}</td>
+        <td class="">
           <span class="badge" ng-repeat = "a in m.actors track by $index"> {{a}}</span>
         </td>
-        <td>{{m.director}}</td>
+        <td class="hidden-xs">{{m.director}}</td>
         <td><a href="" view-reviews movie='m' >{{m.avgRating}}</a></td>
         <td>
-          <add-edit-movie style="cursor:pointer" movie="m" class=" glyphicon glyphicon-pencil"></add-edit-movie>
-          <confirmation-dialog on-confirm-callback=delete(m) msg="Are you sure you want delete this movie?" style="cursor:pointer" class="glyphicon glyphicon-trash"></confirmation-dialog>
-          <add-rating style="cursor:pointer" ng-hide = "hasRated(m)" movie="m" class="glyphicon glyphicon-star"></add-rating>
+          <add-edit-movie style="cursor:pointer;margin-right: 15px;" movie="m" class=" glyphicon glyphicon-pencil"></add-edit-movie>
+          <confirmation-dialog on-confirm-callback=delete(m) msg="Are you sure you want delete this movie?" style="cursor:pointer;margin-right: 15px;" class="glyphicon glyphicon-trash"></confirmation-dialog>
+          <add-rating style="cursor:pointer;margin-right: 15px;" ng-hide = "hasRated(m)" movie="m" class="glyphicon glyphicon-star"></add-rating>
         </td>
       </tr>
     </table>

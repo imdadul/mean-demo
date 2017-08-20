@@ -30,10 +30,6 @@
       setHeader($rootScope.globals.token);
     }
 
-    function login(data) {
-      return $http.post(CONFIG.BASE_URL+'/users/login',data);
-    }
-
     function setHeader(token){
       $http.defaults.headers.common['Authorization'] = 'Basic ' + token;
     }
@@ -51,11 +47,6 @@
       authenticated = true;
     }
 
-    var logout =function  (){
-      clearCredentials();
-      authenticated = false;
-      $state.go(ROUTE_INFO.LOGIN.STATE);
-    }.bind(this)
 
     function clearCredentials() {
       $rootScope.globals = {};
@@ -81,6 +72,17 @@
     function getName(){
       if($rootScope.globals==undefined) return "";
       return $rootScope.globals.email;
+    }
+
+
+    function logout (){
+      clearCredentials();
+      authenticated = false;
+      $state.go(ROUTE_INFO.LOGIN.STATE);
+    }
+
+    function login(data) {
+      return $http.post(CONFIG.BASE_URL+'/users/login',data);
     }
 
 
