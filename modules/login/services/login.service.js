@@ -4,26 +4,32 @@
   angular.module('login.services')
   .factory('loginService', LoginService);
 
-  LoginService.$inject = ['$state','$http','CONFIG','$rootScope', '$cookies', 'ROUTE_INFO' ];
+  LoginService.$inject = ['$state','$http','CONFIG','$rootScope', '$cookies', 'ROUTE_INFO','$transitions' ];
 
-  function LoginService($state, $http, CONFIG,$rootScope, $cookies, ROUTE_INFO) {
+  function LoginService($state, $http, CONFIG,$rootScope, $cookies, ROUTE_INFO,$transitions) {
 
     var authenticated = false;
 
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-      if( (toState.url!=ROUTE_INFO.LOGIN.URL && toState.url!=ROUTE_INFO.SIGNUP.URL) && isAuthenticated()==false){
-        event.preventDefault();
-        console.log('REDIRECTING TO LOGIN');
-        $state.go(ROUTE_INFO.LOGIN.STATE);
+    $transitions.onStart({
+      to: function(toState){
+        if( (toState.name!=ROUTE_INFO.LOGIN.STATE && toState.name!=ROUTE_INFO.SIGNUP.STATE) && isAuthenticated()==false){
+          console.log('Should redirect to login');
+          return true;
+        }
+        else  if(toState.url==ROUTE_INFO.LOGIN.URL && isAuthenticated()==true){
+          console.log('Should redirect to dashboard');
+          return true;
+        }
       }
-      else  if(toState.url==ROUTE_INFO.LOGIN.URL && isAuthenticated()==true){
-        event.preventDefault();
-        console.log('Already logged in TO LOGIN');
+    }, function() {
+      if(isAuthenticated()) {
         $state.go(ROUTE_INFO.DASHBOARD.STATE);
+      }
+      else {
+        $state.go(ROUTE_INFO.LOGIN.STATE);
       }
     });
 
-    //if(angular.equals({},$cookies.getObject('globals'))==false) {
     if($cookies.getObject('globals')!=undefined) {
       $rootScope.globals = $cookies.getObject('globals');
       setUserCookies($cookies.get('rememberMe')!=undefined);

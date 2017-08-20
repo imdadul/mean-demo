@@ -7,6 +7,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group form-group-md">
+        <div ng-show="movie.ratings.length==0">No reviews yet</div>
         <div class="form-group form-group-md"  ng-repeat='r in movie.ratings'>
           <star-rating-comp read-only="true" rating="r.rating" star-type="'icon'" ></star-rating-comp>
           <br>

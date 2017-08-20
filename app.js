@@ -9,6 +9,7 @@ angular.module('movies', [
 
     // AngularJS dependencies
     'ui.router',
+    'ui.router.state.events',
     'ngCookies',
     'mgcrea.ngStrap',
     'star-rating',

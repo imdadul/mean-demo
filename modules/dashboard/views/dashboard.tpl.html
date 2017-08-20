@@ -32,11 +32,11 @@
           <span class="badge" ng-repeat = "a in m.actors track by $index"> {{a}}</span>
         </td>
         <td class="hidden-xs">{{m.director}}</td>
-        <td><a href="" view-reviews movie='m' >{{m.avgRating}}</a></td>
+        <td><a href="" view-reviews movie='m' data-title="Click to view ratings" bs-tooltip>{{m.avgRating}}</a></td>
         <td>
-          <add-edit-movie style="cursor:pointer;margin-right: 15px;" movie="m" class=" glyphicon glyphicon-pencil"></add-edit-movie>
-          <confirmation-dialog on-confirm-callback=delete(m) msg="Are you sure you want delete this movie?" style="cursor:pointer;margin-right: 15px;" class="glyphicon glyphicon-trash"></confirmation-dialog>
-          <add-rating style="cursor:pointer;margin-right: 15px;" ng-hide = "hasRated(m)" movie="m" class="glyphicon glyphicon-star"></add-rating>
+          <add-edit-movie style="cursor:pointer;margin-right: 15px;" movie="m" class=" glyphicon glyphicon-pencil" data-title="Click to edit" bs-tooltip></add-edit-movie>
+          <confirmation-dialog on-confirm-callback=delete(m) msg="Are you sure you want delete this movie?" style="cursor:pointer;margin-right: 15px;" class="glyphicon glyphicon-trash" data-title="Click to delete" bs-tooltip></confirmation-dialog>
+          <add-rating style="cursor:pointer;margin-right: 15px;" ng-hide = "hasRated(m)" movie="m" class="glyphicon glyphicon-star" data-title="Click to rate" bs-tooltip ></add-rating>
         </td>
       </tr>
     </table>

@@ -14,12 +14,12 @@ angular.module('dashboard.directives').directive('viewReviews',
                         if (angular.isDefined(attrs.movie)) {
                             scope.movie = angular.copy(scope.$eval(attrs.movie));
                             scope.editMode = true;
-                            scope.title = "Reviews of "+scope.movie.title;
+                            scope.headerLine = "Reviews of "+scope.movie.title;
                         }
 
                         if(modal==undefined){
                             modal = $modal({
-                                title: scope.title,
+                                title:scope.headerLine,
                                 scope: scope,
                                 templateUrl: '/modules/dashboard/directives/view-reviews/view-reviews.tpl.html',
                                 show: false
