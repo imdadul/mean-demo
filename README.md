@@ -8,6 +8,7 @@ Open cmd or bash run these commands,
 
 ```
 git clone https://github.com/imdadul/mean-demo-FE.git 
+cd mean-demo-FE
 npm install
 npm start
 ```
