@@ -17,3 +17,46 @@ http://localhost:8080   .........Gooo!
  
 
 In case you want to change the backend endpoint, goto <code>modules/common/constants/config.js</code> & change <code>BASE_URL</code>
+
+
+<h3>Folder structure</h3>
+
+```
+
+├──moduels
+│   └── common 
+│       └──constants
+│       └──directives
+│       └──services
+│       └── common.module.js
+│   └── dashboard 
+│       └──controllers
+│       └──directives
+│       └──services
+│       └──styles
+│       └──views
+│       └── dashboard.module.js
+│   └── layout 
+│       └──controllers
+│       └──styles
+│       └──views
+│       └── layout.module.js
+│   └── login 
+│       └──controllers
+│       └──services
+│       └──styles
+│       └──views
+│       └── login.module.js
+│   └── signup 
+│       └──constants
+│       └──directives
+│       └──services
+│       └──styles
+│       └──views
+│       └── signup.module.js
+├──app.js
+├──index.html
+├──package.json
+├──README.md
+    
+```
